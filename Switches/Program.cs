@@ -11,21 +11,21 @@ namespace Switches
         static void Main(string[] args)
         {
             Console.Write("Please Enter Some Text: ");
-            do
+            do//keeps executing the script so you can keep typing
             {
                 ColorRandomizer();
                 Console.ReadKey();
             } while (true);
         }
 
-        private static void ColorRandomizer()
+        private static void ColorRandomizer()//Generates a random number from 1 to 16 and passes it into the color switcher method
         {
             Random rnd = new Random();
             int color = rnd.Next(1, 16);
             Console.ForegroundColor = Switcher(color);
         }
 
-        public static ConsoleColor Switcher(int a)
+        public static ConsoleColor Switcher(int a)//takes an int value which is then routed to output a ConsoleColor
         {
             switch (a)
             {
