@@ -21,49 +21,34 @@ namespace Switches
         private static void ColorRandomizer()//Generates a random number from 1 to 16 and passes it into the color switcher method
         {
             Random rnd = new Random();
-            int color = rnd.Next(1, 16);
+            int color = rnd.Next(1, 15);
             Console.ForegroundColor = Switcher(color);
         }
 
         public static ConsoleColor Switcher(int a)//takes an int value which is then routed to output a ConsoleColor
         {
-            switch (a)
-            {
-                case 1:
-                    return ConsoleColor.Black;
-                case 2:
-                    return ConsoleColor.Blue;
-                case 3:
-                    return ConsoleColor.Cyan;
-                case 4:
-                    return ConsoleColor.DarkBlue;
-                case 5:
-                    return ConsoleColor.DarkCyan;
-                case 6:
-                    return ConsoleColor.DarkGray;
-                case 7:
-                    return ConsoleColor.DarkGreen;
-                case 8:
-                    return ConsoleColor.DarkMagenta;
-                case 9:
-                    return ConsoleColor.DarkRed;
-                case 10:
-                    return ConsoleColor.DarkYellow;
-                case 11:
-                    return ConsoleColor.Gray;
-                case 12:
-                    return ConsoleColor.Green;
-                case 13:
-                    return ConsoleColor.Magenta;
-                case 14:
-                    return ConsoleColor.Red;
-                case 15:
-                    return ConsoleColor.White;
-                case 16:
-                    return ConsoleColor.Yellow;
-                default:
-                    return ConsoleColor.White;
-            }
+            var colorList = new List<ColorEntity> {
+                new ColorEntity{ColorName = ConsoleColor.DarkCyan, ColorId = 1},
+                new ColorEntity{ColorName = ConsoleColor.Blue, ColorId = 2},
+                new ColorEntity{ColorName = ConsoleColor.Cyan, ColorId = 3},
+                new ColorEntity{ColorName = ConsoleColor.DarkBlue, ColorId = 4},
+                new ColorEntity{ColorName = ConsoleColor.DarkGray, ColorId = 5},
+                new ColorEntity{ColorName = ConsoleColor.DarkGreen, ColorId = 6},
+                new ColorEntity{ColorName = ConsoleColor.DarkMagenta, ColorId = 7},
+                new ColorEntity{ColorName = ConsoleColor.DarkRed, ColorId = 8},
+                new ColorEntity{ColorName = ConsoleColor.DarkYellow, ColorId = 9},
+                new ColorEntity{ColorName = ConsoleColor.Gray, ColorId = 10},
+                new ColorEntity{ColorName = ConsoleColor.Green, ColorId = 11},
+                new ColorEntity{ColorName = ConsoleColor.Magenta, ColorId = 12},
+                new ColorEntity{ColorName = ConsoleColor.Red, ColorId = 13},
+                new ColorEntity{ColorName = ConsoleColor.White, ColorId = 14},
+                new ColorEntity{ColorName = ConsoleColor.Yellow, ColorId = 15},
+            };
+
+
+
+            var result = colorList.SingleOrDefault(x => x.ColorId == a);
+            return result.ColorName;
         }
     }
 }
